@@ -1,3 +1,6 @@
+import './styles.css';
+
+
 function Form(){
 
     const movie = {
@@ -7,8 +10,6 @@ function Form(){
         count: 2,
         score: 4.5
     };
-
-
 
     return (
         <div className="dsmovie-form-container">
