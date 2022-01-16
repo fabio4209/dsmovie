@@ -1,6 +1,8 @@
 package com.devsuperior.dsmovie.entities;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "tb_movie")
@@ -13,6 +15,20 @@ public class Movie {
     private Double score;
     private Integer count;
     private String image;
+
+    /*
+    @OneToMany:
+    Por que "id.movie" ?
+        id -> Nome do atributo na entidade Score, do tipo ScorePK
+        movie -> Dentro da entidade ScorePK o nome do atributo é movie
+
+    A partir de scores eu consigo acessar todas as avaliações
+        de um determinado filme a partir da entidade Movie
+     */
+    @OneToMany(mappedBy = "id.movie")
+    private Set<Score> scores = new HashSet<>();
+
+
 
     public Movie(){
 
@@ -57,4 +73,14 @@ public class Movie {
     public void setImage(String image) {
         this.image = image;
     }
+
+    public Set<Score> getScores() {
+        return scores;
+    }
+
+    public void setScores(Set<Score> scores) {
+        this.scores = scores;
+    }
+
+
 }
